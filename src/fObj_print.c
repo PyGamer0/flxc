@@ -20,7 +20,7 @@ static void _fObj_print_a(fObj *x, int nl) {
         double *p = (double *) x->ptr;
 
         printf("[");
-        for (int i = 0; i < x->n; i++) {
+        for (size_t i = 0; i < x->n; i++) {
             printf("%lf", p[i]);
             if (i != x->n - 1)
                 printf(", ");
@@ -30,7 +30,7 @@ static void _fObj_print_a(fObj *x, int nl) {
         int *p = (int *) x->ptr;
 
         printf("[");
-        for (int i = 0; i < x->n; i++) {
+        for (size_t i = 0; i < x->n; i++) {
             printf("%d", p[i]);
             if (i != x->n - 1)
                 printf(", ");
@@ -40,8 +40,8 @@ static void _fObj_print_a(fObj *x, int nl) {
         fObj *p = (fObj *) x->ptr;
 
         printf("[");
-        for (int i = 0; i < x->n; i++) {
-            fObj_print(p[i]);
+        for (size_t i = 0; i < x->n; i++) {
+            fObj_print(p + i);
             if (i != x->n - 1)
                 printf(", ");
         }
@@ -50,6 +50,9 @@ static void _fObj_print_a(fObj *x, int nl) {
         fprintf(stderr, "Invalid type '%c' for fObj.\n", x->type);
         exit(1);
     }
+
+    if (nl)
+        printf("\n");
 }
 
 void fObj_println(fObj *x) {

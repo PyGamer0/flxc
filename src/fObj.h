@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#define MALLOC(n, t) (t *) malloc((n) * sizeof t)
+#define MALLOC(n, t) (t *) malloc((n) * sizeof(t))
 #define NEW(t) MALLOC(1, t)
 
 typedef struct fObj {
